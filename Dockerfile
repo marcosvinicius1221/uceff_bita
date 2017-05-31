@@ -1,20 +1,10 @@
-FROM centos:centos7.3.1611
-
-MAINTAINER Marcos Vinicius Mocelin <marcosvinicius1221@gmail.com>
-
-RUN yum update -y && yum -y install xmlstarlet saxon augeas bsdtar unzip deltarpm wget java-1.8.0-openjdk && yum clean all
-
-RUN groupadd -r wildfly -g 1000 && useradd -u 1000 -r -g wildfly -m -d /opt/wildfly -s /sbin/nologin -c "wildfly user" wildfly
-
-RUN cd /opt 
-RUN cd /opt ; wget http://download.jboss.org/wildfly/10.1.0.Final/wildfly-10.1.0.Final.tar.gz 
-RUN cd /opt ; tar -zxvf wildfly-10.1.0.Final.tar.gz
-RUN cd /opt ; mv wildfly-10.1.0.Final /opt/wildfly
-
-RUN rm -r -f /opt/wildfly-10.1.0.Final.tar.gz
-
-RUN chmod 755 /opt/wildfly
-
+From centos
+RUN yum update -y
+RUN yum install -y net-tool nano wget unzip java-1.8.0-openjdk
+RUN yum clean all
+RUN cd /root ; wget http://download.jboss.org/wildfly/10.1.0.Final/wildfly-10.1.0.Final.zip
+RUN cd /root ; unzip wildfly-10.1.0.Final.zip
+RUN cd /root ; mv wildfly-10.1.0.Final /opt/wildfly
+RUN rm -Rf /root/
 CMD ["/opt/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
-
 EXPOSE 8080
