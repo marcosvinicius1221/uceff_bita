@@ -2,7 +2,7 @@ FROM centos:centos7.3.1611
 
 MAINTAINER Marcos Vinicius Mocelin <marcosvinicius1221@gmail.com>
 
-RUN yum update -y && yum -y install xmlstarlet saxon augeas bsdtar unzip deltarpm java-1.8.0-openjdk && yum clean all
+RUN yum update -y && yum -y install xmlstarlet saxon augeas bsdtar unzip deltarpm wget java-1.8.0-openjdk && yum clean all
 
 RUN groupadd -r wildfly -g 1000 && useradd -u 1000 -r -g wildfly -m -d /opt/wildfly -s /sbin/nologin -c "wildfly user" wildfly
 
