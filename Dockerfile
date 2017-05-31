@@ -9,7 +9,7 @@ RUN groupadd -r wildfly -g 1000 && useradd -u 1000 -r -g wildfly -m -d /opt/wild
 RUN cd /opt 
 RUN wget http://download.jboss.org/wildfly/10.1.0.Final/wildfly-10.1.0.Final.tar.gz 
 RUN tar -zxvf wildfly-10.1.0.Final.tar.gz
-RUN mv /opt/wildfly-10.1.0.Final /opt/wildfly
+RUN mv wildfly-10.1.0.Final /opt/wildfly
 
 RUN rm -r -f /opt/wildfly-10.1.0.Final.tar.gz
 
